@@ -1,0 +1,7 @@
+ftp:
+  host: 127.0.0.1
+  port: 21
+  username: ftpuser
+  password: 123456
+  ftp-mode: passive
+
