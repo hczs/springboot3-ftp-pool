@@ -20,15 +20,15 @@ class Springboot3FtpPoolApplicationTests {
     @Test
     @Order(1)
     void testFtpUpload() {
-        boolean uploadResult = ftpTemplate.upload("test_dir", "hello.txt",
+        boolean uploadResult = ftpTemplate.upload("/test_dir", "hello.txt",
                 new ByteArrayInputStream("file upload test".getBytes(StandardCharsets.UTF_8)));
-        Assertions.assertTrue(true, "测试FTP文件上传");
+        Assertions.assertTrue(uploadResult, "测试FTP文件上传");
     }
 
     @Test
     @Order(2)
     void testDownload() {
-        byte[] downloadContent = ftpTemplate.download("test_dir/hello.txt");
+        byte[] downloadContent = ftpTemplate.download("/test_dir/hello.txt");
         String content = new String(downloadContent, StandardCharsets.UTF_8);
         log.info("download file content: {}", content);
         Assertions.assertTrue(StringUtils.isNotBlank(content), "测试FTP文件下载");

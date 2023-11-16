@@ -46,9 +46,11 @@ public class FtpPoolInitializer {
                 ftpPool.preparePool();
             } catch (Exception e) {
                 log.error("ftp连接池初始化异常，异常信息：{}", e.getMessage(), e);
+                return false;
             }
-            return null;
-        }).thenAccept(o -> log.info("FTP连接池 初始化完成"));
+            log.info("FTP连接池 初始化完成");
+            return true;
+        });
     }
 
 }
